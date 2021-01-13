@@ -13,7 +13,7 @@ const endpoint = `/messengerEndpoint`
 
 
 app.get('/', (req, res) => {
-    res.sendStatus(200).write("Hello to spongebob case generator")
+    res.sendStatus(200).send("Hello to spongebob case generator")
 })
 
 // Adds support for GET requests to our webhook
