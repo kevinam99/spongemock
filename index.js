@@ -1,8 +1,11 @@
-require('dotenv').config()
 const app = require('express')()
+
+// express middleware
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+
+// custom methods
 const mockText = require('./spongebob')
 const respond = require('./sendMessage')
 
