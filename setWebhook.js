@@ -3,7 +3,6 @@
 require('dotenv').config()
 const app = require('express')()
 const bodyParser = require('body-parser')
-const axios = require('axios')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
@@ -12,6 +11,10 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 
 const endpoint = `/messengerEndpoint`
 
+
+app.get('/', (req, res) => {
+    res.sendStatus(200).write("Hello to spongebob case generator")
+})
 
 // Adds support for GET requests to our webhook
 app.get(endpoint, (req, res) => {
@@ -41,9 +44,7 @@ app.get(endpoint, (req, res) => {
     }
     });
 
-app.get('/', (req, res) => {
-    res.sendStatus(200).write("Hello to spongebob case generator")
-})
+
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
 
