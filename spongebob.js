@@ -8,7 +8,4 @@ const mockText = (text) => {
 
 }
 
-let input = `All SOPs will be followed`
-let output = mockText(input)
-
-console.log(output)
+module.exports = mockText
