@@ -1,3 +1,4 @@
+require('dotenv').config()
 const app = require('express')()
 
 // express middleware
@@ -9,6 +10,7 @@ app.use(bodyParser.json())
 const mockText = require('./spongebob')
 const respond = require('./sendMessage')
 
+const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 const PORT = process.env.PORT || 3000
 
 app.get('/', (req, res) => {
