@@ -12,9 +12,6 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 const endpoint = `/messengerEndpoint`
 
 
-app.get('/', (req, res) => {
-    res.sendStatus(200).send("Hello to spongebob case generator")
-})
 
 // Adds support for GET requests to our webhook
 app.get(endpoint, (req, res) => {
