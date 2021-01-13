@@ -1,13 +1,16 @@
+// Run this program and then run the bash script.
+
 require('dotenv').config()
 const app = require('express')()
 const bodyParser = require('body-parser')
 const axios = require('axios')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+
 const PORT = process.env.PORT || 3000
-const endpoint = `/messengerEndpoint`
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 
+const endpoint = `/messengerEndpoint`
 
 const setWebhook = () => {
     
