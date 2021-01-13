@@ -11,6 +11,10 @@ const respond = require('./sendMessage')
 
 const PORT = process.env.PORT || 3000
 
+app.get('/', (req, res) => {
+    res.sendStatus(200).send("Hello to spongebob case generator")
+})
+
 
 app.post(`/messengerEndpoint`, (req, res) => {  
  
