@@ -1,0 +1,22 @@
+{
+  "name": "spongebobcase-bot",
+  "version": "1.0.0",
+  "description": "A bot for Telegram and Facebook Messenger that returns input text in Spongebob case format.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [
+    "spongebob",
+    "case",
+    "facebook",
+    "telegram",
+    "chatbot",
+    "humour"
+  ],
+  "author": "Kevin Mathew",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
