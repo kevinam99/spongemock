@@ -41,6 +41,10 @@ app.get(endpoint, (req, res) => {
     }
     });
 
+app.get('/', (req, res) => {
+    res.sendStatus(200).write("Hello to spongebob case generator")
+})
+
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
 
 
