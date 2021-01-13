@@ -14,7 +14,7 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 const PORT = process.env.PORT || 3000
 
 app.get('/', (req, res) => {
-    res.status(200).send("Hello to spongebob case generator")
+    res.status(200).send(`Hello to spongebob case generator. Chat with me at <a href = "https://m.me/spongemock">https://m.me/spongemock </a> so I can help you mock people!`)
 })
 
 app.get('/messengerEndpoint', (req, res) => { // set webhook
