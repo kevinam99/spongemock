@@ -80,7 +80,7 @@ app.post('/telegramEndpoint', (req, res) => {
     console.log('EVENT RECEIVED')
     const chatId = PAYLOAD.message.chat.id
     const message = mockText(PAYLOAD.message.text)
-    if(message == `/start` || message == `/help`) {
+    if(message == '/start' || message == '/help') {
       respondTelegram(chatId, `Text me and I'll send it in SPonGEbOB CAsE`)
     }
     else {
