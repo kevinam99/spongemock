@@ -80,8 +80,11 @@ app.post('/telegramEndpoint', (req, res) => {
     console.log('EVENT RECEIVED')
     const chatId = PAYLOAD.message.chat.id
     const message = mockText(PAYLOAD.message.text)
-    console.log("RESPONSE:")
-    respondTelegram(chatId, message)
+    if(message === `/start` || message === `/help`) respondTelegram(chatId, `Text me and I'll send it in SPonGEbOB CAsE`)
+    else {
+      console.log("RESPONSE:")
+      respondTelegram(chatId, message)
+    }
   }
   else {
     // Returns a '404 Not Found' if event is not from a page subscription
