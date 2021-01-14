@@ -14,7 +14,7 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 const PORT = process.env.PORT || 3000
 
 app.get('/', (req, res) => {
-    res.status(200).redirect(`https://m.me/spongemock`)
+    res.status(200).write(`Get started with the bot on <a href = "https://m.me/spongemock">Facebook Messenger </a> or on <a href = "t.me/Spongecase_bot"> Telegram </a>.`)
 })
 
 app.get('/messengerEndpoint', (req, res) => { // set webhook
@@ -80,7 +80,7 @@ app.post('/telegramEndpoint', (req, res) => {
     console.log('EVENT RECEIVED')
     const chatId = PAYLOAD.message.chat.id
     const text = PAYLOAD.message.text
-    
+
     if(text === '/start' || text === '/help') respondTelegram(chatId, `Text me and I'll send it in SPonGEbOB CAsE`)
     
     else {

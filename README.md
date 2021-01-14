@@ -4,5 +4,5 @@
 ![Star this repository](https://img.shields.io/github/stars/kevinam99/spongebob-case-bot?style=social)  
 Send this bot a line of text and it will return the text in Spongebob case so you can use it to mock people online. Have fun!
 
-Get started at [https://m.me/spongemock](https://m.me/spongemock).
+Get started on Facebook Messenger at [https://m.me/spongemock](https://m.me/spongemock) or on Telegram at [t.me/Spongecase_bot](t.me/Spongecase_bot).
 You need to have a valid Facebook account for this to work.
