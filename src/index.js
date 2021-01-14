@@ -8,7 +8,7 @@ app.use(bodyParser.json())
 
 // custom methods
 const mockText = require('./spongebob')
-const respond = require('./sendMessage')
+const { respondMessenger, respondTelegram } = require('./sendMessage')
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 const PORT = process.env.PORT || 3000
@@ -19,12 +19,12 @@ app.get('/', (req, res) => {
 
 app.get('/messengerEndpoint', (req, res) => { // set webhook
         // Your verify token. Should be a random string.
-        let VERIFY_TOKEN = PAGE_ACCESS_TOKEN
+        const VERIFY_TOKEN = PAGE_ACCESS_TOKEN
           
         // Parse the query params
-        let mode = req.query['hub.mode'];
-        let token = req.query['hub.verify_token'];
-        let challenge = req.query['hub.challenge'];
+        const mode = req.query['hub.mode'];
+        const token = req.query['hub.verify_token'];
+        const challenge = req.query['hub.challenge'];
           
         // Checks if a token and mode is in the query string of the request
         if (mode && token) {
@@ -43,10 +43,12 @@ app.get('/messengerEndpoint', (req, res) => { // set webhook
         }
 })
 
+
+
 app.post(`/messengerEndpoint`, (req, res) => {  
  
     let body = req.body;
-    // Checks this is an event from a page subscription
+    // Checks this is an event from a page
     if (body.object === 'page') {
         
       // Iterates over each entry - there may be multiple if batched
@@ -56,7 +58,7 @@ app.post(`/messengerEndpoint`, (req, res) => {
         // will only ever contain one message, so we get index 0
         let text = entry.messaging[0].message.text
         let replyToId = entry.messaging[0].sender.id
-        respond(mockText(text), replyToId)
+        respondMessenger(mockText(text), replyToId)
       })
   
       // Returns a '200 OK' response to all requests
@@ -67,5 +69,25 @@ app.post(`/messengerEndpoint`, (req, res) => {
     }
   
   });
+
+// Telegram webhook endpoint
+app.post('/telegramEndpoint', (req, res) => {
+  if(req.body) {
+    res.status(200).send('Message received')
+    const PAYLOAD = req.body
+    console.log("PAYLOAD:")
+    console.log(PAYLOAD)
+    console.log('EVENT RECEIVED')
+    const chatId = PAYLOAD.message.chat.id
+    const message = mockText(PAYLOAD.message.text)
+    console.log("RESPONSE:")
+    respondTelegram(chatId, message)
+  }
+  else {
+    // Returns a '404 Not Found' if event is not from a page subscription
+    res.sendStatus(404);
+  }
+ 
+})
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
